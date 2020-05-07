@@ -216,9 +216,61 @@ paths:
                     type: number
                     description: Internal parameter
                     example: 200
-              examples: {}
+              examples:
+                Response example:
+                  value:
+                    coord:
+                      lon: -121.95
+                      lat: 37.35
+                    weather:
+                      - id: 803
+                        main: Clouds
+                        description: broken clouds
+                        icon: 04n
+                    base: stations
+                    main:
+                      temp: 45.25
+                      feels_like: 41.16
+                      temp_min: 41
+                      temp_max: 50
+                      pressure: 1026
+                      humidity: 75
+                    visibility: 16093
+                    wind:
+                      speed: 2.57
+                      deg: 36
+                    clouds:
+                      all: 75
+                    dt: 1579415808
+                    sys:
+                      type: 1
+                      id: 5845
+                      country: US
+                      sunrise: 1579360793
+                      sunset: 1579396557
+                    timezone: -28800
+                    id: 0
+                    name: Santa Clara
+                    cod: 200
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/unauthorized_response'
 components:
-  schemas: {}
+  schemas:
+    unauthorized_response:
+      title: unauthorized_response
+      type: object
+      properties:
+        cod:
+          type: integer
+        message:
+          type: string
+      required:
+        - cod
+        - message
   securitySchemes:
     app_id:
       name: appid
